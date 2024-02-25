@@ -1,0 +1,10 @@
+if(UNIX AND NOT APPLE)
+  message("---> Linux Platform detected for regex support.")
+  add_compile_options(-DWITH_LINUX)
+else()
+  message("---> Apple Platform detected for regex support.")
+  add_compile_options(-DWITH_APPLE) 
+endif()
+
+add_executable(try-regex try-regex.c regex-match.c)
+target_link_libraries (try-regex LINK_PUBLIC strbuffer-lib)
